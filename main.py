@@ -44,11 +44,6 @@ EMBED_DESCRIPTION = "Παρακαλώ επιλέξτε τον λόγο που θ
 async def on_ready():
     print(f"✅ Συνδέθηκα ως {bot.user}")
 
-# ---------- Ping (για να δοκιμάσεις) ----------
-@bot.command()
-async def ping(ctx):
-    await ctx.send("Pong!")
-
 # ---------- Ticket command ----------
 @bot.command()
 async def ticket(ctx):
@@ -105,7 +100,7 @@ async def ticket(ctx):
 
             async def delete_cb(btn_interaction: discord.Interaction):
                 # allow ephemeral feedback
-                await btn_interaction.response.send_message("⏳ Το ticket θα διαγραφεί σε 5 δευτερόλεπτα...", ephemeral=True)
+                await btn_interaction.response.send_message("⏳ Το ticket θα διαγραφεί σε 10 δευτερόλεπτα...", ephemeral=True)
                 await asyncio.sleep(10)
                 # προσπαθούμε να διαγράψουμε
                 try:
