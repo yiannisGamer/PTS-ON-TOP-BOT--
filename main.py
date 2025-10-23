@@ -21,7 +21,7 @@ client.run(TOKEN)
 
 # === Ticket command ===
 @bot.command()
-async def ticket(ctx):
+async def ticket(ctx):!ticket
     STAFF_ROLES = [1288087153997516913, 1289538235495878659, 1288090189255675944, 1288106262126657586]  # 👈 βάλε τα δικά σου role IDs
 
     EMBED_COLOR = discord.Color.red()
