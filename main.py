@@ -16,9 +16,6 @@ async def on_message(message):
     if message.content.lower() == "ping":
         await message.channel.send("Pong!")
 
-TOKEN = os.getenv("DISCORD_TOKEN")
-client.run(TOKEN)
-
 from discord.ext import commands
 from discord.ui import View, Select, Button
 import asyncio
@@ -99,3 +96,6 @@ async def ticket(ctx):
     embed = discord.Embed(title=EMBED_TITLE, description=EMBED_DESCRIPTION, color=EMBED_COLOR)
     embed.set_thumbnail(url=THUMBNAIL_URL)
     await ctx.send(embed=embed, view=TicketView())
+
+TOKEN = os.getenv("DISCORD_TOKEN")
+client.run(TOKEN)
