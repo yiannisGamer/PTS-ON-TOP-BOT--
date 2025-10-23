@@ -23,7 +23,7 @@ import asyncio
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 @bot.command()
-async def ticket(ctx):
+async def ticket(ctx):ticket
     STAFF_ROLES = [1288087153997516913, 1289538235495878659, 1288090189255675944, 1288106262126657586]  # 👈 Βάλε τα δικά σου role IDs (Owner, Staff)
     EMBED_COLOR = discord.Color.red()
     THUMBNAIL_URL = "https://www.leitwerk.de/media/e3/6a/d3/1706205188/massive.jpg"
