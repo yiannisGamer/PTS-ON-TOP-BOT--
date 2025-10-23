@@ -19,21 +19,13 @@ async def on_message(message):
 TOKEN = os.getenv("DISCORD_TOKEN")
 client.run(TOKEN)
 
-# άλλες εντολές ή imports που έχεις πάνω...
-
-@bot.command()
-async def ticket(ctx):
-    embed = discord.Embed(title="🎫 Υποστήριξη Voodoo OfficialV2", description="Παρακαλώ επιλέξτε τον λόγο που θέλετε να ανοίξετε ticket.", color=discord.Color.red())
-    await ctx.send(embed=embed, view=TicketView())
-
-bot.run("TOKEN_ΕΔΩ")  # αυτό ΠΑΝΤΑ να είναι τελευταίο!
-
+@bot.command
 # === 🎫 ΕΝΤΟΛΗ TICKET ===
 from discord.ui import View, Select, Button
 import asyncio
 
 # IDs ρόλων που θα βλέπουν τα ticket (βάλε τα δικά σου)
-STAFF_ROLES = [123456789012345678, 987654321098765432]
+STAFF_ROLES = [1288087153997516913, 1289538235495878659, 1288090189255675944, 1288106262126657586]
 
 # Ρυθμίσεις εμφάνισης
 EMBED_COLOR = discord.Color.red()
