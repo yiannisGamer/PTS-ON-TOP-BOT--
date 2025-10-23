@@ -101,7 +101,7 @@ class TicketView(View):
 
 # === 🧠 ΕΝΤΟΛΗ !ticket ===
 @bot.command()
-async def ticket(ctx):
+async def ticket(ctx):!ticket
     embed = discord.Embed(title=EMBED_TITLE, description=EMBED_DESCRIPTION, color=EMBED_COLOR)
     embed.set_thumbnail(url=THUMBNAIL_URL)
     await ctx.send(embed=embed, view=TicketView())
