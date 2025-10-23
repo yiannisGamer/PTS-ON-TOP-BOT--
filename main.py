@@ -19,6 +19,15 @@ async def on_message(message):
 TOKEN = os.getenv("DISCORD_TOKEN")
 client.run(TOKEN)
 
+# άλλες εντολές ή imports που έχεις πάνω...
+
+@bot.command()
+async def ticket(ctx):
+    embed = discord.Embed(title="🎫 Υποστήριξη Voodoo OfficialV2", description="Παρακαλώ επιλέξτε τον λόγο που θέλετε να ανοίξετε ticket.", color=discord.Color.red())
+    await ctx.send(embed=embed, view=TicketView())
+
+bot.run("TOKEN_ΕΔΩ")  # αυτό ΠΑΝΤΑ να είναι τελευταίο!
+
 # === 🎫 ΕΝΤΟΛΗ TICKET ===
 from discord.ui import View, Select, Button
 import asyncio
