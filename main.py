@@ -36,7 +36,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 STAFF_ROLES = [1288087153997516913, 1289538235495878659, 1288090189255675944, 1288106262126657586]  # βάλτες εδώ τα role IDs σου
 THUMBNAIL_URL = "https://www.leitwerk.de/media/e3/6a/d3/1706205188/massive.jpg"     # άλλαξε με τη δική σου εικόνα
 EMBED_COLOR = discord.Color.red()
-EMBED_TITLE = "🎫 Υποστήριξη Voodoo OfficialV2"
+EMBED_TITLE = "🎫 https://www.leitwerk.de/media/e3/6a/d3/1706205188/massive.jpg Υποστήριξη Voodoo OfficialV2"
 EMBED_DESCRIPTION = "Παρακαλώ επιλέξτε τον λόγο που θέλετε να ανοίξετε ticket."
 
 # ---------- Ready ----------
