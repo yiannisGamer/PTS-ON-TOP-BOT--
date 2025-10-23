@@ -16,5 +16,121 @@ async def on_message(message):
     if message.content.lower() == "ping":
         await message.channel.send("Pong!")
 
+# main.py - δουλειά 100% για Railway (commands.Bot + !ticket command + ping)
+import os
+import asyncio
+import discord
+from discord.ext import commands
+from discord.ui import View, Select, Button
+
+# ---------- Intents ----------
+intents = discord.Intents.default()
+intents.message_content = True
+intents.guilds = True
+intents.members = True
+
+# ---------- Bot ----------
+bot = commands.Bot(command_prefix="!", intents=intents)
+
+# ---------- Config: βάλε τα δικά σου ----------
+STAFF_ROLES = [1288087153997516913, 1289538235495878659, 1288090189255675944, 1288106262126657586]  # βάλτες εδώ τα role IDs σου
+THUMBNAIL_URL = "https://www.leitwerk.de/media/e3/6a/d3/1706205188/massive.jpg"     # άλλαξε με τη δική σου εικόνα
+EMBED_COLOR = discord.Color.red()
+EMBED_TITLE = "🎫 Υποστήριξη Voodoo OfficialV2"
+EMBED_DESCRIPTION = "Παρακαλώ επιλέξτε τον λόγο που θέλετε να ανοίξετε ticket."
+
+# ---------- Ready ----------
+@bot.event
+async def on_ready():
+    print(f"✅ Συνδέθηκα ως {bot.user}")
+
+# ---------- Ping (για να δοκιμάσεις) ----------
+@bot.command()
+async def ping(ctx):
+    await ctx.send("Pong!")
+
+# ---------- Ticket command ----------
+@bot.command()
+async def ticket(ctx):
+    class TicketSelect(Select):
+        def __init__(self):
+            options = [
+                discord.SelectOption(label="👑 Owner Support", description="Επικοινωνία με Owner", value="owner"),
+                discord.SelectOption(label="📞 General Support", description="Βοήθεια από Staff", value="general"),
+                discord.SelectOption(label="🚫 Ban Appeal", description="Αίτηση για unban", value="ban"),
+                discord.SelectOption(label="💼 Job Application", description="Αίτηση για δουλειά", value="job"),
+                discord.SelectOption(label="🚩 Report Player", description="Αναφορά παίκτη", value="report"),
+            ]
+            super().__init__(placeholder="📩 Επιλέξτε λόγο για ticket...", options=options)
+
+        async def callback(self, interaction: discord.Interaction):
+            user = interaction.user
+            guild = interaction.guild
+
+            # φτιάξε/πάρε category
+            category = discord.utils.get(guild.categories, name="🎫 Tickets")
+            if category is None:
+                category = await guild.create_category("🎫 Tickets")
+
+            # μοναδικό όνομα καναλιού
+            base_name = f"ticket-{user.name}".replace(" ", "-").lower()
+            name = base_name
+            i = 1
+            while discord.utils.get(guild.channels, name=name):
+                name = f"{base_name}-{i}"; i += 1
+
+            # permissions
+            overwrites = {
+                guild.default_role: discord.PermissionOverwrite(view_channel=False),
+                user: discord.PermissionOverwrite(view_channel=True, send_messages=True, read_message_history=True),
+                guild.me: discord.PermissionOverwrite(view_channel=True, send_messages=True)
+            }
+            for role_id in STAFF_ROLES:
+                role = guild.get_role(role_id)
+                if role:
+                    overwrites[role] = discord.PermissionOverwrite(view_channel=True, send_messages=True, read_message_history=True)
+
+            ticket_channel = await guild.create_text_channel(name=name, category=category, overwrites=overwrites, topic=f"Ticket για {user}")
+
+            # embed που στέλνει μέσα
+            embed = discord.Embed(
+                title=f"🎟️ Ticket — {self.values[0]}",
+                description=f"Γεια σου {user.mention}!\n\nΠαρακαλώ γράψε εδώ το πρόβλημά σου. Το Staff θα απαντήσει σύντομα.\n\nΠατήστε ❌ Delete για να κλείσετε το ticket.",
+                color=EMBED_COLOR
+            )
+            embed.set_thumbnail(url=THUMBNAIL_URL)
+
+            # κουμπί διαγραφής
+            delete_button = Button(label="❌ Delete Ticket", style=discord.ButtonStyle.red)
+
+            async def delete_cb(btn_interaction: discord.Interaction):
+                # allow ephemeral feedback
+                await btn_interaction.response.send_message("⏳ Το ticket θα διαγραφεί σε 5 δευτερόλεπτα...", ephemeral=True)
+                await asyncio.sleep(10)
+                # προσπαθούμε να διαγράψουμε
+                try:
+                    await ticket_channel.delete()
+                except Exception:
+                    pass
+
+            delete_button.callback = delete_cb
+            view = View()
+            view.add_item(delete_button)
+
+            await ticket_channel.send(content=f"{user.mention}", embed=embed, view=view)
+            await interaction.response.send_message(f"✅ Το ticket δημιουργήθηκε: {ticket_channel.mention}", ephemeral=True)
+
+    class TicketView(View):
+        def __init__(self):
+            super().__init__(timeout=None)
+            self.add_item(TicketSelect())
+
+    embed = discord.Embed(title=EMBED_TITLE, description=EMBED_DESCRIPTION, color=EMBED_COLOR)
+    embed.set_thumbnail(url=THUMBNAIL_URL)
+    await ctx.send(embed=embed, view=TicketView())
+
+# ---------- Run (Railway expects token in env var DISCORD_TOKEN) ----------
+bot.run(os.getenv("DISCORD_TOKEN"))
+
 TOKEN = os.getenv("DISCORD_TOKEN")
 client.run(TOKEN)
