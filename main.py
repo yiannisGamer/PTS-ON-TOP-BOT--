@@ -44,6 +44,12 @@ EMBED_DESCRIPTION = "Παρακαλώ επιλέξτε τον λόγο που θ
 async def on_ready():
     print(f"✅ Συνδέθηκα ως {bot.user}")
 
+@bot.command()
+@commands.has_permissions(manage_messages=True)  # Για να μπορεί να σβήνει μηνύματα
+async def clear(ctx, amount: int):
+    await ctx.channel.purge(limit=amount)
+    await ctx.send(f"Έσβησα {amount} μηνύματα!", delete_after=5)
+
 # ---------- Ticket command ----------
 @bot.command()
 async def ticket(ctx):
