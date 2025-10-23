@@ -19,11 +19,15 @@ async def on_message(message):
 TOKEN = os.getenv("DISCORD_TOKEN")
 client.run(TOKEN)
 
-# === Ticket command ===
+from discord.ext import commands
+from discord.ui import View, Select, Button
+import asyncio
+
+bot = commands.Bot(command_prefix="!", intents=intents)
+
 @bot.command()
 async def ticket(ctx):
-    STAFF_ROLES = [1288087153997516913, 1289538235495878659, 1288090189255675944, 1288106262126657586]  # 👈 βάλε τα δικά σου role IDs
-
+    STAFF_ROLES = [1288087153997516913, 1289538235495878659, 1288090189255675944, 1288106262126657586]  # 👈 Βάλε τα δικά σου role IDs (Owner, Staff)
     EMBED_COLOR = discord.Color.red()
     THUMBNAIL_URL = "https://www.leitwerk.de/media/e3/6a/d3/1706205188/massive.jpg"
     EMBED_TITLE = "🎫 Υποστήριξη Voodoo OfficialV2"
@@ -62,8 +66,11 @@ async def ticket(ctx):
                     await ticket_channel.set_permissions(role, view_channel=True, send_messages=True)
 
             embed = discord.Embed(
-                title=f"🎟️ Ticket - {self.values[0]}",
-                description="👋 Καλησπέρα! Ένα μέλος του Staff θα σας εξυπηρετήσει σύντομα.\n\nΑν θέλετε να κλείσετε το ticket, πατήστε 🔒",
+                title=f"{EMBED_TITLE} - {self.values[0]}",
+                description=(
+                    "👋 Καλησπέρα! Ένα μέλος του Staff θα σας εξυπηρετήσει σύντομα.\n\n"
+                    "Αν θέλετε να κλείσετε το ticket, πατήστε 🔒"
+                ),
                 color=EMBED_COLOR
             )
             embed.set_thumbnail(url=THUMBNAIL_URL)
@@ -92,6 +99,3 @@ async def ticket(ctx):
     embed = discord.Embed(title=EMBED_TITLE, description=EMBED_DESCRIPTION, color=EMBED_COLOR)
     embed.set_thumbnail(url=THUMBNAIL_URL)
     await ctx.send(embed=embed, view=TicketView())
-
-# === Token ===
-bot.run(os.getenv("DISCORD_TOKEN"))
