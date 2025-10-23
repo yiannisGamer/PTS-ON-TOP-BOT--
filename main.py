@@ -48,7 +48,7 @@ async def on_ready():
 @commands.has_permissions(manage_messages=True)  # Για να μπορεί να σβήνει μηνύματα
 async def clear(ctx, amount: int):
     await ctx.channel.purge(limit=amount)
-    await ctx.send(f"Έσβησα {amount} μηνύματα!", delete_after=5)
+    await ctx.send(f"✅Έσβησα {amount} μηνύματα!", delete_after=5)
 
 # ---------- Ticket command ----------
 @bot.command()
