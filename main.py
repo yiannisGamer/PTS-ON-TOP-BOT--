@@ -37,7 +37,7 @@ STAFF_ROLES = [1288087153997516913, 1289538235495878659, 1288090189255675944, 12
 THUMBNAIL_URL = "https://www.leitwerk.de/media/e3/6a/d3/1706205188/massive.jpg"     # άλλαξε με τη δική σου εικόνα
 EMBED_COLOR = discord.Color.red()
 EMBED_TITLE = "🎫 Υποστήριξη Voodoo OfficialV2"
-EMBED_DESCRIPTION = "https://www.leitwerk.de/media/e3/6a/d3/1706205188/massive.jpg Παρακαλώ επιλέξτε τον λόγο που θέλετε να ανοίξετε ticket."
+EMBED_DESCRIPTION = "Παρακαλώ επιλέξτε τον λόγο που θέλετε να ανοίξετε ticket."
 
 # ---------- Ready ----------
 @bot.event
