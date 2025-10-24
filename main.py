@@ -125,7 +125,7 @@ async def delete_cb(btn_interaction: discord.Interaction):
                     pass
 
 delete_button.callback = delete_cb
-            view = View()
+view = View()
             view.add_item(delete_button)
 
             await ticket_channel.send(content=f"{user.mention}", embed=embed, view=view)
