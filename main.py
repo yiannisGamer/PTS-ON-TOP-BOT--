@@ -114,7 +114,7 @@ embed.set_footer(text=f"{interaction.user.name} | {current_time}", icon_url=inte
             # κουμπί διαγραφής
 delete_button = Button(label="⛔ Delete Ticket", style=discord.ButtonStyle.red)
 
-            async def delete_cb(btn_interaction: discord.Interaction):
+async def delete_cb(btn_interaction: discord.Interaction):
                 # allow ephemeral feedback
                 await btn_interaction.response.send_message("⏳ Το ticket θα διαγραφεί σε 10 δευτερόλεπτα...", ephemeral=True)
                 await asyncio.sleep(10)
