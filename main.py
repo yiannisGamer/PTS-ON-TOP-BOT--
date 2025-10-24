@@ -107,7 +107,7 @@ embed = discord.Embed(
 )
 from zoneinfo import ZoneInfo
 
-            local_time = interaction.created_at.astimezone(ZoneInfo("Europe/Athens"))
+local_time = interaction.created_at.astimezone(ZoneInfo("Europe/Athens"))
             current_time = local_time.strftime("%H:%M %d/%m/%Y")
             embed.set_footer(text=f"{interaction.user.name} | {current_time}", icon_url=interaction.user.display_avatar.url)
 
