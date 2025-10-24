@@ -98,6 +98,11 @@ async def ticket(ctx):
             )
             embed.set_thumbnail(url=THUMBNAIL_URL)
 
+            embed.set_author(
+            name="PTS ON TOP SYSTEM 💜",
+            icon_url="https://cdn.wallpapersafari.com/77/21/0QwLjm.jpg"  # 👈 βάλε εδώ το link της εικόνας σου
+            )
+
             # κουμπί διαγραφής
             delete_button = Button(label="⛔ Delete Ticket", style=discord.ButtonStyle.red)
 
