@@ -34,10 +34,10 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 
 # ---------- Config: βάλε τα δικά σου ----------
 STAFF_ROLES = [1288087153997516913, 1289538235495878659, 1288090189255675944, 1288106262126657586]  # βάλτες εδώ τα role IDs σου
-THUMBNAIL_URL = "https://motionbgs.com/media/4801/hack-phantom.960x540.mp4"     # άλλαξε με τη δική σου εικόνα
+THUMBNAIL_URL = "https://giffiles.alphacoders.com/120/120237.gif"     # άλλαξε με τη δική σου εικόνα
 EMBED_COLOR = discord.Color.red()
-EMBED_TITLE = "📩WELCOME TO PTS SUPPORT🔥"
-EMBED_DESCRIPTION = "please choose the one you would like📥"
+EMBED_TITLE = "WELCOME TO PTS SUPPORT🔥"
+EMBED_DESCRIPTION = "📥please choose the one you would like"
 
 # ---------- Ready ----------
 @bot.event
@@ -56,8 +56,8 @@ async def ticket(ctx):
     class TicketSelect(Select):
         def __init__(self):
             options = [
-                discord.SelectOption(label="🛒Buy A Product", description="If you have a problem with a product, click here☝️", value="🛒Welcome to the store, what product do you want to get?"),
-                discord.SelectOption(label="📞Support", description="If you have a problem with a product, click here☝️", value="📞Welcome to support, what problem are you having?"),
+                discord.SelectOption(label="🛒Buy A Product", description="☝️If you have a problem with a product, click here", value="🛒Welcome to the store, what product do you want to get?"),
+                discord.SelectOption(label="📞Support", description="☝️If you have a problem with a product, click here", value="📞Welcome to support, what problem are you having?"),
             ]
             super().__init__(placeholder="click here for whatever you want", options=options)
 
