@@ -125,7 +125,7 @@ async def ticket(ctx):
 
     embed = discord.Embed(title=EMBED_TITLE, description=EMBED_DESCRIPTION, color=EMBED_COLOR)
     embed.set_author(
-    name="PTS ON TOP SYSTEM 💜",
+    name="Pts On Top Ticket System",
     icon_url="https://cdn.wallpapersafari.com/77/21/0QwLjm.jpg"
 )
 
