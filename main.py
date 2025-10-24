@@ -137,7 +137,7 @@ class TicketView(View):
             self.add_item(TicketSelect())
 
 embed = discord.Embed(title=EMBED_TITLE, description=EMBED_DESCRIPTION, color=EMBED_COLOR)
-    embed.set_author(
+embed.set_author(
     name="Pts On Top Ticket System",
     icon_url="https://cdn.wallpapersafari.com/77/21/0QwLjm.jpg"
 )
