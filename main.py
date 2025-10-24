@@ -80,7 +80,7 @@ async def ticket(ctx):
         prefix = "ticket"  # default
 
             # Δημιουργία ονόματος καναλιού
-  base_name = f"{prefix}-{user.name}".replace(" ", "-").lower()
+base_name = f"{prefix}-{user.name}".replace(" ", "-").lower()
   name = base_name
   i = 1
   while discord.utils.get(guild.channels, name=name):
