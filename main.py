@@ -72,8 +72,8 @@ async def ticket(ctx):
 
             ticket_type = self.values[0]  # value που επέλεξε ο χρήστης
             # Ορισμός prefix ανά τύπο ticket
-            if ticket_type == "🛒Buy A Product":
-            prefix = "🛒Buy A Product"
+    if ticket_type == "🛒Buy A Product":
+    prefix = "🛒Buy A Product"
             elif ticket_type == "📞Support":
             prefix = "📞Support"
             else:
