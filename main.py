@@ -108,7 +108,6 @@ ticket_channel = await guild.create_text_channel(
         overwrites=overwrites,
         topic=f"Ticket για {user}"
     )
-ticket_channel = await guild.create_text_channel(name=name, category=category, overwrites=overwrites, topic=f"Ticket για {user}")
 
             # embed που στέλνει μέσα
 embed = discord.Embed(
