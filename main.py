@@ -74,7 +74,7 @@ async def ticket(ctx):
 
             # Ορισμός prefix ανά τύπο ticket
             if ticket_type == "📞Support":
-            prefix = ""
+            prefix = "support"
             elif ticket_type == "🛒Buy A Product":
             prefix = "🛒Buy A Product"
             else:
