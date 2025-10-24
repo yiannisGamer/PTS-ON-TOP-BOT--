@@ -34,10 +34,10 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 
 # ---------- Config: βάλε τα δικά σου ----------
 STAFF_ROLES = [1288087153997516913, 1289538235495878659, 1288090189255675944, 1288106262126657586]  # βάλτες εδώ τα role IDs σου
-THUMBNAIL_URL = "https://www.leitwerk.de/media/e3/6a/d3/1706205188/massive.jpg"     # άλλαξε με τη δική σου εικόνα
+THUMBNAIL_URL = "https://motionbgs.com/media/4801/hack-phantom.960x540.mp4"     # άλλαξε με τη δική σου εικόνα
 EMBED_COLOR = discord.Color.red()
-EMBED_TITLE = "🎫 Υποστήριξη Voodoo OfficialV2"
-EMBED_DESCRIPTION = "Παρακαλώ επιλέξτε τον λόγο που θέλετε να ανοίξετε ticket."
+EMBED_TITLE = "📩WELCOME TO PTS SUPPORT🔥"
+EMBED_DESCRIPTION = "please choose the one you would like📥"
 
 # ---------- Ready ----------
 @bot.event
@@ -56,13 +56,10 @@ async def ticket(ctx):
     class TicketSelect(Select):
         def __init__(self):
             options = [
-                discord.SelectOption(label="👑 Owner Support", description="Επικοινωνία με Owner", value="owner"),
-                discord.SelectOption(label="📞 General Support", description="Βοήθεια από Staff", value="general"),
-                discord.SelectOption(label="🚫 Ban Appeal", description="Αίτηση για unban", value="ban"),
-                discord.SelectOption(label="💼 Job Application", description="Αίτηση για δουλειά", value="job"),
-                discord.SelectOption(label="🚩 Report Player", description="Αναφορά παίκτη", value="report"),
+                discord.SelectOption(label="🛒Buy A Product", description="If you have a problem with a product, click here☝️", value="🛒Welcome to the store, what product do you want to get?"),
+                discord.SelectOption(label="📞Support", description="If you have a problem with a product, click here☝️", value="📞Welcome to support, what problem are you having?"),
             ]
-            super().__init__(placeholder="📩 Επιλέξτε λόγο για ticket...", options=options)
+            super().__init__(placeholder="click here for whatever you want", options=options)
 
         async def callback(self, interaction: discord.Interaction):
             user = interaction.user
@@ -95,14 +92,14 @@ async def ticket(ctx):
 
             # embed που στέλνει μέσα
             embed = discord.Embed(
-                title=f"🎟️ Ticket — {self.values[0]}",
-                description=f"Γεια σου {user.mention}!\n\nΠαρακαλώ γράψε εδώ το πρόβλημά σου. Το Staff θα απαντήσει σύντομα.\n\nΠατήστε ❌ Delete για να κλείσετε το ticket.",
+                title=f"🎫 Ticket — {self.values[0]}",
+                description=f"❤️‍🔥welcome to the team❤️‍🔥 {user.mention}\n\nwelcome to the team what would you like❤️‍🔥\n\n👇If you want the ticket closed, click here",
                 color=EMBED_COLOR
             )
             embed.set_thumbnail(url=THUMBNAIL_URL)
 
             # κουμπί διαγραφής
-            delete_button = Button(label="❌ Delete Ticket", style=discord.ButtonStyle.red)
+            delete_button = Button(label="⛔ Delete Ticket", style=discord.ButtonStyle.red)
 
             async def delete_cb(btn_interaction: discord.Interaction):
                 # allow ephemeral feedback
@@ -119,7 +116,7 @@ async def ticket(ctx):
             view.add_item(delete_button)
 
             await ticket_channel.send(content=f"{user.mention}", embed=embed, view=view)
-            await interaction.response.send_message(f"✅ Το ticket δημιουργήθηκε: {ticket_channel.mention}", ephemeral=True)
+            await interaction.response.send_message(f"✅ the ticket was created: {ticket_channel.mention}", ephemeral=True)
 
     class TicketView(View):
         def __init__(self):
