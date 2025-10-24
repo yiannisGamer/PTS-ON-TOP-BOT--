@@ -124,7 +124,7 @@ async def delete_cb(btn_interaction: discord.Interaction):
                 except Exception:
                     pass
 
-            delete_button.callback = delete_cb
+delete_button.callback = delete_cb
             view = View()
             view.add_item(delete_button)
 
