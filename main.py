@@ -101,14 +101,14 @@ for role_id in STAFF_ROLES:
         role = guild.get_role(role_id)
         if role:
             overwrites[role] = discord.PermissionOverwrite(view_channel=True, send_messages=True, read_message_history=True)
-
-ticket_channel = await guild.create_text_channel(
+ 
+# Δημιουργία καναλιού (μέσα στη συνάρτηση!)
+    ticket_channel = await guild.create_text_channel(
         name=name,
         category=category,
         overwrites=overwrites,
         topic=f"Ticket για {user}"
     )
-
             # embed που στέλνει μέσα
 embed = discord.Embed(
                 title=f"🎫 Ticket — {self.values[0]}",
