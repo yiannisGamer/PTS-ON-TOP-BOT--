@@ -70,7 +70,7 @@ async def ticket(ctx):
             if category is None:
                 category = await guild.create_category("🎫 Tickets")
 
- base_name = f"{prefix}-{user.name}".replace(" ", "-").lower()
+            base_name = f"{prefix}-{user.name}".replace(" ", "-").lower()
             name = base_name
             i = 1
             while discord.utils.get(guild.channels, name=name):
