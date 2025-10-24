@@ -142,7 +142,7 @@ embed.set_author(
     icon_url="https://cdn.wallpapersafari.com/77/21/0QwLjm.jpg"
 )
 
-    embed.set_thumbnail(url=THUMBNAIL_URL)
+embed.set_thumbnail(url=THUMBNAIL_URL)
     await ctx.send(embed=embed, view=TicketView())
 
 # ---------- Run (Railway expects token in env var DISCORD_TOKEN) ----------
