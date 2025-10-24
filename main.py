@@ -105,7 +105,7 @@ embed = discord.Embed(
                 description=f"❤️‍🔥welcome to the team❤️‍🔥 {user.mention}\n\nwelcome to the team what would you like❤️‍🔥\n\n👇If you want the ticket closed, click here",
                 color=EMBED_COLOR
 )
-            from zoneinfo import ZoneInfo
+from zoneinfo import ZoneInfo
 
             local_time = interaction.created_at.astimezone(ZoneInfo("Europe/Athens"))
             current_time = local_time.strftime("%H:%M %d/%m/%Y")
