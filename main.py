@@ -143,7 +143,7 @@ embed.set_author(
 )
 
 embed.set_thumbnail(url=THUMBNAIL_URL)
-    await ctx.send(embed=embed, view=TicketView())
+await ctx.send(embed=embed, view=TicketView())
 
 # ---------- Run (Railway expects token in env var DISCORD_TOKEN) ----------
 bot.run(os.getenv("DISCORD_TOKEN"))
