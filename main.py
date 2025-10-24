@@ -71,9 +71,8 @@ async def ticket(ctx):
                 category = await guild.create_category("🎫 Tickets")
 
             ticket_type = self.values[0]  # value που επέλεξε ο χρήστης
-
             # Ορισμός prefix ανά τύπο ticket
-            elif ticket_type == "📞Support":
+            if ticket_type == "📞Support":
             prefix = "📞Support"
             elif ticket_type == "🛒Buy A Product":
             prefix = "🛒Buy A Product"
