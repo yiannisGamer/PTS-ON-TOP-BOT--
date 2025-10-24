@@ -81,10 +81,10 @@ async def ticket(ctx):
 
             # Δημιουργία ονόματος καναλιού
 base_name = f"{prefix}-{user.name}".replace(" ", "-").lower()
-  name = base_name
-  i = 1
-  while discord.utils.get(guild.channels, name=name):
-      name = f"{base_name}-{i}"; i += 1
+name = base_name
+i = 1
+while discord.utils.get(guild.channels, name=name):
+    name = f"{base_name}-{i}"; i += 1
 
             # permissions
             overwrites = {
