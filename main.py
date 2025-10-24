@@ -112,7 +112,7 @@ current_time = local_time.strftime("%H:%M %d/%m/%Y")
 embed.set_footer(text=f"{interaction.user.name} | {current_time}", icon_url=interaction.user.display_avatar.url)
 
             # κουμπί διαγραφής
-            delete_button = Button(label="⛔ Delete Ticket", style=discord.ButtonStyle.red)
+delete_button = Button(label="⛔ Delete Ticket", style=discord.ButtonStyle.red)
 
             async def delete_cb(btn_interaction: discord.Interaction):
                 # allow ephemeral feedback
