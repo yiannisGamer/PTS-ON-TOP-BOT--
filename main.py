@@ -97,7 +97,7 @@ for role_id in STAFF_ROLES:
     if role:
         overwrites[role] = discord.PermissionOverwrite(view_channel=True, send_messages=True, read_message_history=True)
 
-            ticket_channel = await guild.create_text_channel(name=name, category=category, overwrites=overwrites, topic=f"Ticket για {user}")
+ticket_channel = await guild.create_text_channel(name=name, category=category, overwrites=overwrites, topic=f"Ticket για {user}")
 
             # embed που στέλνει μέσα
             embed = discord.Embed(
