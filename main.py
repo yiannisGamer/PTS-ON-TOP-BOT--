@@ -95,15 +95,14 @@ async def ticket(ctx):
                 title=f"🎫 Ticket — {self.values[0]}",
                 description=f"❤️‍🔥welcome to the team❤️‍🔥 {user.mention}\n\nwelcome to the team what would you like❤️‍🔥\n\n👇If you want the ticket closed, click here",
                 color=EMBED_COLOR
-            )
+)
             embed.set_thumbnail(url=THUMBNAIL_URL)
             
            # 🧍‍♂️ Εμφάνιση του χρήστη (όπως στον Voodoo)
-           embed.set_author(
-           name=f"{user.name} | Ticket Created",
-           icon_url=user.display_avatar.url
-           )
-        
+embed.set_author(
+    name=f"{user.name} | Ticket Created",
+    icon_url=user.display_avatar.url
+)   
             # κουμπί διαγραφής
             delete_button = Button(label="⛔ Delete Ticket", style=discord.ButtonStyle.red)
 
