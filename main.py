@@ -100,7 +100,7 @@ for role_id in STAFF_ROLES:
 ticket_channel = await guild.create_text_channel(name=name, category=category, overwrites=overwrites, topic=f"Ticket για {user}")
 
             # embed που στέλνει μέσα
-            embed = discord.Embed(
+embed = discord.Embed(
                 title=f"🎫 Ticket — {self.values[0]}",
                 description=f"❤️‍🔥welcome to the team❤️‍🔥 {user.mention}\n\nwelcome to the team what would you like❤️‍🔥\n\n👇If you want the ticket closed, click here",
                 color=EMBED_COLOR
