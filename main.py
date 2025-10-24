@@ -98,11 +98,6 @@ async def ticket(ctx):
 )
             embed.set_thumbnail(url=THUMBNAIL_URL)
             
-# 🧍‍♂️ Εμφάνιση του χρήστη (όπως στον Voodoo)
-embed.set_author(
-    name=f"{user.name} | Ticket Created",
-    icon_url=user.display_avatar.url
-)
             # κουμπί διαγραφής
             delete_button = Button(label="⛔ Delete Ticket", style=discord.ButtonStyle.red)
 
