@@ -96,12 +96,11 @@ async def ticket(ctx):
                 description=f"❤️‍🔥welcome to the team❤️‍🔥 {user.mention}\n\nwelcome to the team what would you like❤️‍🔥\n\n👇If you want the ticket closed, click here",
                 color=EMBED_COLOR
             )
-            embed.set_thumbnail(url=THUMBNAIL_URL)
-
             embed.set_author(
-            name="PTS ON TOP SYSTEM 💜",
-            icon_url="https://cdn.wallpapersafari.com/77/21/0QwLjm.jpg"  # 👈 βάλε εδώ το link της εικόνας σου
+                name="PTS ON TOP SYSTEM 💜",
+                icon_url="https://cdn.wallpapersafari.com/77/21/0QwLjm.jpg"  # 👈 βάλε εδώ το link της εικόνας σου
             )
+            embed.set_thumbnail(url=THUMBNAIL_URL)
 
             # κουμπί διαγραφής
             delete_button = Button(label="⛔ Delete Ticket", style=discord.ButtonStyle.red)
