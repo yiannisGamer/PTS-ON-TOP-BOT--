@@ -128,6 +128,10 @@ async def ticket(ctx):
     name="Pts On Top Ticket System",
     icon_url="https://cdn.wallpapersafari.com/77/21/0QwLjm.jpg"
 )
+    embed.set_author(
+    name=f"{user.name} | Ticket Created",
+    icon_url=user.display_avatar.url
+)
 
     embed.set_thumbnail(url=THUMBNAIL_URL)
     await ctx.send(embed=embed, view=TicketView())
