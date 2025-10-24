@@ -73,11 +73,11 @@ async def ticket(ctx):
             ticket_type = self.values[0]  # value που επέλεξε ο χρήστης
             # Ορισμός prefix ανά τύπο ticket
     if ticket_type == "🛒Buy A Product":
-    prefix = "🛒Buy A Product"
-            elif ticket_type == "📞Support":
-            prefix = "📞Support"
-            else:
-            prefix = "ticket"  # default
+        prefix = "🛒Buy A Product"
+    elif ticket_type == "📞Support":
+        prefix = "📞Support"
+    else:
+        prefix = "ticket"  # default
 
             # Δημιουργία ονόματος καναλιού
             base_name = f"{prefix}-{user.name}".replace(" ", "-").lower()
