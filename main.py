@@ -69,43 +69,54 @@ async def ticket(ctx):
             category = discord.utils.get(guild.categories, name="🎫 Tickets")
             if category is None:
                 category = await guild.create_category("🎫 Tickets")
-          
-            # Ορισμός prefix ανάλογα με τον τύπο ticket
-            ticket_type = self.values[0]
-            prefix = ticket_type  # π.χ. "owner", "support", "ban" κλπ
 
-            # Βρες ή φτιάξε την κατηγορία
-            category = discord.utils.get(guild.categories, name="🎫 Tickets")
-            if category is None:
-                category = await guild.create_category("🎫 Tickets")
-
-            # Δημιουργία ονόματος καναλιού
-            base_name = f"{prefix}-{user.name}".replace(" ", "-").lower()
+ base_name = f"{prefix}-{user.name}".replace(" ", "-").lower()
             name = base_name
             i = 1
             while discord.utils.get(guild.channels, name=name):
                 name = f"{base_name}-{i}"
                 i += 1
 
-            # Δικαιώματα
+            # --- Permissions ---
             overwrites = {
-                guild.default_role: discord.PermissionOverwrite(view_channel=False),
-                user: discord.PermissionOverwrite(view_channel=True, send_messages=True, read_message_history=True),
-                guild.me: discord.PermissionOverwrite(view_channel=True, send_messages=True)
+                guild.default_role: discord.PermissionOverwrite(
+                    view_channel=False
+                ),
+                user: discord.PermissionOverwrite(
+                    view_channel=True,
+                    send_messages=True,
+                    attach_files=True,
+                    embed_links=True,
+                    read_message_history=True
+                ),
+                guild.me: discord.PermissionOverwrite(
+                    view_channel=True,
+                    send_messages=True,
+                    manage_messages=True,
+                    read_message_history=True
+                ),
             }
 
+            # Δώσε πρόσβαση στα STAFF roles
             for role_id in STAFF_ROLES:
                 role = guild.get_role(role_id)
                 if role:
-                    overwrites[role] = discord.PermissionOverwrite(view_channel=True, send_messages=True, read_message_history=True)
+                    overwrites[role] = discord.PermissionOverwrite(
+                        view_channel=True,
+                        send_messages=True,
+                        read_message_history=True,
+                        manage_messages=True,
+                        attach_files=True
+                    )
 
-            # Δημιουργία καναλιού
+            # --- Δημιουργία καναλιού ---
             ticket_channel = await guild.create_text_channel(
                 name=name,
                 category=category,
                 overwrites=overwrites,
-                topic=f"Ticket για {user}"
+                topic=f"Ticket για {user.name}"
             )
+
             # embed που στέλνει μέσα
 embed = discord.Embed(
                 title=f"🎫 Ticket — {self.values[0]}",
